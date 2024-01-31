@@ -1,31 +1,44 @@
+'use client'
 import Image from "next/image";
 import styles from './page.module.scss'
 import axios from 'axios'
+import {useState, useEffect} from 'react'
 // import React, { useEffect, useState } from "react";
-// import axios from "axios";
-
-
-
-
 
 
 // const API = axios.create({ baseURL: 'http://127.0.0.1:5000'})
 // export const fetchData = () => API.get(`/check_mongodb`);
 // export default API;
 
-function Home() {
-  // const API = axios.create({baseURL: "http://127.0.0.1:5000/check_mongodb"})
-  const url = 'http://127.0.0.1:5000/check_mongodb';
 
-  const data = axios.get(url)
-    .then(response => console.log(response.data));
-    
+
+function Home()  {
+  // const API = axios.create({baseURL: "http://127.0.0.1:5000/check_mongodb"})
+  // const url = 'http://127.0.0.1:5000/check_mongodb';
+  const [data, setData] = useState([{
+    id: null,
+    name: null,
+    type: null
+  }]);
+
+  useEffect(() => {
+    axios.get("http://127.0.0.1:5000/check_mongodb")
+      .then(response => {
+        setData(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+  // useEffect(() => { axios.get(url)
+  //   .then(response => console.log(response.data));
+  console.log(data) 
   return (
     <div className={styles.Container}>
       Hello World
       <ul>
       {data.map(data => (
-          <li key={data.id}>{data.name}</li>
+          <li key={data.id}>{data.name},{data.type} </li>
       ))}
       </ul>
       

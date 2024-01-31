@@ -1,4 +1,12 @@
 .Container{
-    color: blue 
+    display: flex;
+    width: 100%;
+    background-color: black;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: rgb(145, 255, 0);
+    font-size: larger;
+    font-weight: bolder;
 
 }

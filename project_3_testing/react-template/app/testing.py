@@ -33,12 +33,10 @@ def check_mongodb():
         collection= db['animals']
         data= collection.find({},{'_id':0})
         data_list = [doc for doc in data]
-        # Run a basic query to check if the database is running
-        # result = db.command("ping")
+      
         print(data_list)
         return jsonify(data_list)
-    # except Exception as e:
-    #     return jsonify({"message": "Failed to connect to MongoDB", "error": str(e)}), 500
+   
 
 if __name__ == '__main__':
     app.run(debug=True)

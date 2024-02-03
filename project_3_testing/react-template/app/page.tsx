@@ -14,8 +14,6 @@ function Home()  {
     state: null
   }]);
 
-
-
   const [selectedColumn, setSelectedColumn] = useState('');
   const [selectedValue, setSelectedValue] = useState('');
 
@@ -106,7 +104,7 @@ function Home()  {
             <VictoryPie
               data={pieChartData}
               colorScale="qualitative"
-              labelComponent={<VictoryLabel angle={20}/>}
+              labelComponent={<VictoryLabel angle={0}/>}
               height={500}
               width={800}
               labels={({ datum }) => `${datum.x}: ${datum.y}`}
